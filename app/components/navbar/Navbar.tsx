@@ -5,9 +5,9 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-import ShowInformation from "./PersonalDataForm";
-import PersonalDataForm from "./PersonalDataForm";
-
+import ShowInformation from "../../../pages/PersonalDataForm";
+import PersonalDataForm from "../../../pages/PersonalDataForm";
+import styles from "../../styles.module.css";
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           flex-row 
           items-center
           justify-between
-          gap-
+          gap-1
           md:gap-0"
           >
             <Logo />
@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
-      <PersonalDataForm />
+      <div className={styles.container}></div>
     </div>
   );
 };

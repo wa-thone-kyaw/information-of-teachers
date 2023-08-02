@@ -1,0 +1,8 @@
+.container {
+  /* Set the background image path relative to the "public" folder */
+  background-image: url('../public/TUM-4.jpg');
+  /* Adjust background size and other properties as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

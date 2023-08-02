@@ -10,7 +10,8 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 
-import PersonalDataForm from "./PersonalDataForm";
+import PersonalDataForm from "../../../pages/PersonalDataForm";
+import { useRouter } from "next/router";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -25,9 +26,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   /* const handlePersonalDataFormClick = () => {
     router.push("/app/components/navbar/PersonalDataForm.tsx");
   }; */
+
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+  /* const router = useRouter();
+  const handleButtonClick = () => {
+    router.push("/pages/MyPersonalData.tsx");
+  }; */
   return (
     <div className="relative">
       <div className=" flex flex-row items-center gap-3">
@@ -101,8 +107,9 @@ cursor-pointer
               <>
                 {/*        to show items when user login */}
                 <MenuItem onClick={() => {}} label=" Information Lists" />
-                <MenuItem onClick={() => {}} label="Add Information" />
 
+                <MenuItem onClick={() => {}} label="View My Information" />
+                <MenuItem onClick={() => {}} label=" How to used?" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>

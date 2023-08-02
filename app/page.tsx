@@ -1,10 +1,11 @@
 "use client";
+
 export default function Home() {
   return (
-    /*  <div className="text-rose-500 text-4xl flex items-center justify-center h-screen">
+    <div className="text-rose-500 text-4xl flex items-center justify-center h-screen">
       Go Green with IMOT.....
-    </div> */
-    <div>Go Green with IMOT...</div>
+    </div>
+    // <div>Go Green with IMOT...</div>
   );
 }
 

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { BiSearch } from "react-icons/bi";
+import Link from "next/link";
 const Search = () => {
   return (
     <div
@@ -29,7 +30,7 @@ text-sm
 font-semibold
 px-6"
         >
-          Ipsum
+          HOME
         </div>
 
         {/*  Add Information */}
@@ -50,7 +51,9 @@ px-6"
         
         "
         >
-          <div className="hidden sm:block">Add Information</div>
+          <div className="hidden sm:block">
+            <Link href="/PersonalDataForm">Add information</Link>
+          </div>
           <div>
             <Image
               className="rounded-full"
@@ -77,7 +80,9 @@ px-6"
         gap-3
         "
         >
-          <div className="hidden sm:block">Search</div>
+          <div className="hidden sm:block">
+            <Link href="/SearchForm">Search</Link>
+          </div>
           <div
             className="p-2
 bg-rose-500
