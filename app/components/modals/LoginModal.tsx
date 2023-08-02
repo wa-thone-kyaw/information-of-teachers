@@ -51,9 +51,17 @@ const loginModal = () => {
       }
     });
   };
+
+  const onToggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Welcome back" subtitle="Login to your account!" />
+      <Heading
+        title="Welcome back to IMOT."
+        subtitle="Login to your account!"
+      />
 
       <Input
         id="email"
@@ -93,7 +101,7 @@ const loginModal = () => {
 
       "
       >
-        <div className=" justify-center flex flex-row items-center gap-2">
+        {/*   <div className=" justify-center flex flex-row items-center gap-2">
           <div>Don&apos;t have an account? </div>
           <div
             onClick={loginModal.onClose}
@@ -106,7 +114,20 @@ const loginModal = () => {
           >
             Sign Up
           </div>
-        </div>
+        </div> */}
+        <p>
+          Don&apos;t have an account?
+          <span
+            onClick={onToggle}
+            className="text-neutral-800
+      cursor-pointer
+      hover:underline
+      
+      "
+          >
+            Create an account
+          </span>
+        </p>
       </div>
     </div>
   );

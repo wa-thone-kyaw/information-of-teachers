@@ -9,6 +9,9 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
+
+import PersonalDataForm from "./PersonalDataForm";
+
 interface UserMenuProps {
   currentUser?: SafeUser | null;
 }
@@ -19,6 +22,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
+  /* const handlePersonalDataFormClick = () => {
+    router.push("/app/components/navbar/PersonalDataForm.tsx");
+  }; */
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);

@@ -5,6 +5,8 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import ShowInformation from "./PersonalDataForm";
+import PersonalDataForm from "./PersonalDataForm";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -31,6 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <PersonalDataForm />
     </div>
   );
 };

@@ -7,6 +7,7 @@
     "NEXTAUTH",
     "prismadb",
     "prismatb",
+    "Relativness",
     "zustand"
   ]
 }
