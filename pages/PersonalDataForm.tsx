@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Axios from "axios";
 import { toast } from "react-hot-toast";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 const PersonalDataForm = () => {
   const [name, setName] = useState("");
 
@@ -9,7 +9,7 @@ const PersonalDataForm = () => {
 
   const [other_name, setOtherName] = useState("");
   const [age, setAge] = useState("");
-  const [birth_date, setBirthDate] = useState("");
+  /* const [birth_date, setBirthDate] = useState(""); */
 
   const [birth_location, setBirthLocation] = useState("");
 
@@ -56,6 +56,7 @@ const PersonalDataForm = () => {
   const [from_years, setFromYears] = useState("");
 
   const [finished_years, setFinishedYears] = useState("");
+  const [type_of_school, setTypeOfSchool] = useState("");
   const [school_location, setSchoolLocation] = useState("");
 
   const [school_level, setSchoolLevel] = useState("");
@@ -69,8 +70,6 @@ const PersonalDataForm = () => {
   const [matter_of_visiting, setMatterOfVisiting] = useState("");
 
   const [deposit_exchange, setDepositExchange] = useState("");
-
-  const [father_name, setFatherName] = useState("");
 
   const [father_relative_name, setFatherRelativeName] = useState("");
 
@@ -190,7 +189,7 @@ const PersonalDataForm = () => {
   const [go_abroad, setGa] = useState("");
   const [reason_go_abroad, setRga] = useState("");
   const [abroad_country, setAc] = useState("");
-
+  const [time_abroad, setTa] = useState("");
   const [arrive_time_abroad, setAta] = useState("");
   const [what_gov_abroad, setWga] = useState("");
   const [dept_when_arr_from_abroad, setDwafa] = useState("");
@@ -204,7 +203,7 @@ const PersonalDataForm = () => {
   const [submit_person_dept, setSpd] = useState("");
   const [stuff_behavior, setSb] = useState("");
 
-  const [date, setD] = useState("");
+  const [submit_person_date, setSpdate] = useState("");
   const [submit_person1_ticket, setSp1t] = useState("");
   const [submit_person1_name, setSp1n] = useState("");
   const [submit_person1_position, setSp1p] = useState("");
@@ -241,9 +240,9 @@ const PersonalDataForm = () => {
     setAge(e.target.value);
   };
 
-  const handleBD = (e: any) => {
+  /*  const handleBD = (e: any) => {
     setBirthDate(e.target.value);
-  };
+  }; */
 
   const handleBL = (e: any) => {
     setBirthLocation(e.target.value);
@@ -334,6 +333,10 @@ const PersonalDataForm = () => {
     setFinishedYears(e.target.value);
   };
 
+  const handleTypeOfSchool = (e: any) => {
+    setTypeOfSchool(e.target.value);
+  };
+
   const handleSc = (e: any) => {
     setSchoolLocation(e.target.value);
   };
@@ -362,10 +365,6 @@ const PersonalDataForm = () => {
     setDepositExchange(e.target.value);
   };
 
-  const handleFn = (e: any) => {
-    setFatherName(e.target.value);
-  };
-
   const handleFrn = (e: any) => {
     setFatherRelativeName(e.target.value);
   };
@@ -392,10 +391,6 @@ const PersonalDataForm = () => {
 
   const handleFrnnote = (e: any) => {
     setFatherRelativenessNote(e.target.value);
-  };
-
-  const handleMn = (e: any) => {
-    setMotherName(e.target.value);
   };
 
   const handleMrn = (e: any) => {
@@ -625,6 +620,9 @@ const PersonalDataForm = () => {
   const handleAc = (e: any) => {
     setAc(e.target.value);
   };
+  const handleTa = (e: any) => {
+    setTa(e.target.value);
+  };
   const handleAta = (e: any) => {
     setAta(e.target.value);
   };
@@ -661,8 +659,8 @@ const PersonalDataForm = () => {
     setSb(e.target.value);
   };
 
-  const handleDate = (e: any) => {
-    setD(e.target.value);
+  const handleSpdate = (e: any) => {
+    setSpdate(e.target.value);
   };
   const handleSp1t = (e: any) => {
     setSp1t(e.target.value);
@@ -726,7 +724,7 @@ const PersonalDataForm = () => {
     formData.append("other_name", other_name);
 
     formData.append("age", age);
-    formData.append("birth_date", birth_date);
+    /* formData.append("birth_date", birth_date); */
 
     formData.append("birth_location", birth_location);
 
@@ -759,6 +757,7 @@ const PersonalDataForm = () => {
     formData.append("from_years", from_years);
 
     formData.append("finished_years", finished_years);
+    formData.append("type_of_school", type_of_school);
     formData.append("school_location", school_location);
     formData.append("school_level", school_level);
 
@@ -768,7 +767,7 @@ const PersonalDataForm = () => {
     formData.append("matter_of_visiting", matter_of_visiting);
 
     formData.append("deposit_exchange", deposit_exchange);
-    formData.append("father_name", father_name);
+
     formData.append("father_relative_name", father_relative_name);
     formData.append("father_relativeness", father_relativeness);
     formData.append("father_relativeness_gender", father_relativeness_gender);
@@ -911,7 +910,7 @@ const PersonalDataForm = () => {
     formData.append("go_abroad", go_abroad);
     formData.append("reason_go_abroad", reason_go_abroad);
     formData.append("abroad_country", abroad_country);
-
+    formData.append("time_abroad", time_abroad);
     formData.append("arrive_time_abroad", arrive_time_abroad);
 
     formData.append("what_gov_abroad", what_gov_abroad);
@@ -926,7 +925,7 @@ const PersonalDataForm = () => {
     formData.append("submit_person_dept", submit_person_dept);
 
     formData.append("stuff_behavior", stuff_behavior);
-    formData.append("date", date);
+    formData.append("submit_person_date", submit_person_date);
 
     formData.append("submit_person1_ticket", submit_person1_ticket);
     formData.append("submit_person1_name", submit_person1_name);
@@ -952,7 +951,7 @@ const PersonalDataForm = () => {
 
     setOtherName("");
     setAge("");
-    setBirthDate("");
+    /*  setBirthDate(""); */
     setBirthLocation("");
     setReligion("");
     setNation("");
@@ -980,6 +979,7 @@ const PersonalDataForm = () => {
 
     setFromYears("");
     setFinishedYears("");
+    setTypeOfSchool("");
     setSchoolLocation("");
 
     setSchoolLevel("");
@@ -989,7 +989,7 @@ const PersonalDataForm = () => {
     setCountriesVisited("");
     setMatterOfVisiting("");
     setDepositExchange("");
-    setFatherName("");
+
     setFatherRelativeName("");
     setFatherRelativeness("");
     setFatherRelativenessGender("");
@@ -1085,6 +1085,7 @@ const PersonalDataForm = () => {
     setGa("");
     setRga("");
     setAc("");
+    setTa("");
     setAta("");
     setWga("");
     setDwafa("");
@@ -1097,7 +1098,7 @@ const PersonalDataForm = () => {
     setSpd("");
 
     setSb("");
-    setD("");
+    setSpdate("");
     setSp1t("");
 
     setSp1n("");
@@ -1151,23 +1152,29 @@ const PersonalDataForm = () => {
   return (
     <div className="mx-auto w-full max-w-md">
       <form
+        // className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
       >
-        <div>
-          <h1 style={mystyle}>ကိုယ်ရေးမှတ်တမ်း(၃၆)ချက်</h1>
+        <div className="mb-4">
+          <h1
+            className="text-center text-2xl font-bold mb-4"
+            /* style={mystyle} */
+          >
+            ကိုယ်ရေးမှတ်တမ်း(၃၆)ချက်
+          </h1>
         </div>
         {/* start */}
         <div
-          className="yourStyle"
-
+          // className="yourStyle"
+          className="mb-4"
           /* className="form-group" */
         >
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="name"
           >
-            အမည်
+            ၁။ အမည်
           </label>
           <input
             onChange={handleNC}
@@ -1176,77 +1183,120 @@ const PersonalDataForm = () => {
             type="text"
             name="name"
             // required
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
         {/*end*/}
         <div className="form-group">
-          <label htmlFor="child_name">ငယ်နာမည်</label>
+          <label
+            htmlFor="child_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၂။ ငယ်နာမည်
+          </label>
           <input
             onChange={handleCN}
             id="child_name"
             value={child_name}
             type="text"
             name="child_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="other_name">အခြားအမည်များ (ရှိလျှင်)</label>
+          <label
+            htmlFor="other_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၃။ အခြားအမည်များ (ရှိလျှင်)
+          </label>
           <input
             onChange={handleON}
             id="other_name"
             value={other_name}
             type="text"
             name="other_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="age">အသက် (မွေးနေ့သက္ကရာဇ်)</label>
+          <label
+            htmlFor="age"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၄။ အသက် (မွေးနေ့သက္ကရာဇ်)
+          </label>
           <input
             onChange={handleAge}
             id="age"
             value={age}
             type="text"
             name="age"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="birth_date"> (မွေးနေ့သက္ကရာဇ်)</label>
-          <input
-            onChange={handleBD}
-            id="birth_date"
-            value={birth_date}
-            type="text"
-            name="birth_date"
-            // required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="birth_location">မွေးရာဇာတိ</label>
+          <label
+            htmlFor="birth_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၅။ မွေးရာဇာတိ
+          </label>
           <input
             onChange={handleBL}
             id="birth_location"
             value={birth_location}
             type="text"
             name="birth_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="religion">ကိုးကွယ်သည့်ဘာသာ</label>
+          <label
+            htmlFor="religion"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၆။ ကိုးကွယ်သည့်ဘာသာ
+          </label>
           <input
             onChange={handleReligion}
             id="religion"
             value={religion}
             type="text"
             name="religion"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="nrc">အမျိုးသားမှတ်ပုံတင်အမှတ်</label>
+          <label
+            htmlFor="religion"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၇။ လူမျိုး (ကပြားဖြစ်လျှင် မည်သည့် ကပြားဖြစ်ကြာင်းနှင့် ရှမ်း၊ ချင်း
+            စသည့် လူမျိုးစုဖြစ်လျှင် လိုအပ်သလို ဖော်ပြရန် )။
+          </label>
+          <input
+            onChange={handleNation}
+            id="nation"
+            value={nation}
+            type="text"
+            name="nation"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="nrc"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၈။ အမျိုးသားမှတ်ပုံတင်အမှတ်
+          </label>
 
           <input
             onChange={handleNrc}
@@ -1254,100 +1304,152 @@ const PersonalDataForm = () => {
             value={nrc}
             type="text"
             name="nrc"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="height">အရပ်</label>
+          <label
+            htmlFor="height"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၉။ အရပ်
+          </label>
           <input
             onChange={handleHeight}
             id="height"
             value={height}
             type="text"
             name="height"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="weight">ကိုယ်အလေးချိန်</label>
+          <label
+            htmlFor="weight"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၀။ ကိုယ်အလေးချိန်
+          </label>
           <input
             onChange={handleWeight}
             id="weight"
             value={weight}
             type="text"
             name="weight"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="hair_color">ဆံပင်အရောင်</label>
+          <label
+            htmlFor="hair_color"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၁။ ဆံပင်အရောင်
+          </label>
           <input
             onChange={handleHc}
             id="hair_color"
             value={hair_color}
             type="text"
             name="hair_color"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="eyes_color">မျက်စိအရောင်</label>
+          <label
+            htmlFor="eyes_color"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၂။ မျက်စိအရောင်
+          </label>
           <input
             onChange={handleEc}
             id="eyes_color"
             value={eyes_color}
             type="text"
             name="eyes_color"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="prominent_sign">ထင်ရှားသည့်အမှတ်အသား</label>
+          <label
+            htmlFor="prominent_sign"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၃။ ထင်ရှားသည့်အမှတ်အသား
+          </label>
           <input
             onChange={handlePs}
             id="prominent_sign"
             value={prominent_sign}
             type="text"
             name="prominent_sign"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="department">အလုပ်အကိုင်နှင့် ဌာန </label>
+          <label
+            htmlFor="department"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၄။ အလုပ်အကိုင်နှင့် ဌာန{" "}
+          </label>
           <input
             onChange={handleDepartment}
             id="department"
             value={department}
             type="text"
             name="department"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="service_age">အမှုထမ်းသက်(ဝင်ရောက်သည့်နေ့စွဲ)</label>
+          <label
+            htmlFor="service_age"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၅။ အမှုထမ်းသက်(ဝင်ရောက်သည့်နေ့စွဲ)
+          </label>
           <input
             onChange={handleSa}
             id="service_age"
             value={service_age}
             type="text"
             name="service_age"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="current_address">လက်ရှိနေရပ်လိပ်စာအပြည့်အစုံ</label>
+          <label
+            htmlFor="current_address"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၆။ လက်ရှိနေရပ်လိပ်စာအပြည့်အစုံ
+          </label>
           <input
             onChange={handleCa}
             id="current_address"
             value={current_address}
             type="text"
             name="current_address"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="permanent_address">
-            အမြဲတမ်းနေရပ်လိပ်စာ အပြည့်အစုံ
+          <label
+            htmlFor="permanent_address"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၇။ အမြဲတမ်းနေရပ်လိပ်စာ အပြည့်အစုံ
           </label>
           <input
             onChange={handlePa}
@@ -1355,33 +1457,51 @@ const PersonalDataForm = () => {
             value={permanent_address}
             type="text"
             name="permanent_address"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="education">ပညာအရည်အချင်း</label>
+          <label
+            htmlFor="education"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၈။ ပညာအရည်အချင်း
+          </label>
           <input
             onChange={handleEducation}
             id="education"
             value={education}
             type="text"
             name="education"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="degree">ဘွဲ့အမည်</label>
+          <label
+            htmlFor="degree"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ဘွဲ့အမည်
+          </label>
           <input
             onChange={handleDegree}
             id="degree"
             value={degree}
             type="text"
             name="degree"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="specialization">အထူးပြုဘာသာ</label>
+          <label
+            htmlFor="specialization"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အထူးပြုဘာသာ
+          </label>
           <input
             onChange={handleSp}
             id="specialization"
@@ -1392,52 +1512,79 @@ const PersonalDataForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="degree_year_received">ရရှိသည့်ခုနှစ်</label>
+          <label
+            htmlFor="degree_year_received"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ရရှိသည့်ခုနှစ်
+          </label>
           <input
             onChange={handleDyr}
             id="degree_year_received"
             value={degree_year_received}
             type="text"
             name="degree_year_received"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="grade">ရရှိသည့်အဆင့်</label>
+          <label
+            htmlFor="grade"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ရရှိသည့်အဆင့်
+          </label>
           <input
             onChange={handleGrade}
             id="grade"
             value={grade}
             type="text"
             name="grade"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="first_degree">ပထမဘွဲ့</label>
+          <label
+            htmlFor="first_degree"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            (က) ပထမဘွဲ့
+          </label>
           <input
             onChange={handleFd}
             id="first_degree"
             value={first_degree}
             type="text"
             name="first_degree"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="graduate_degree">ဘွဲ့လွန်ဘွဲ့</label>
+          <label
+            htmlFor="graduate_degree"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            (ခ)ဘွဲ့လွန်ဘွဲ့
+          </label>
           <input
             onChange={handleGd}
             id="graduate_degree"
             value={graduate_degree}
             type="text"
             name="graduate_degree"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="school_attended">
-            ပညာဆည်းပူးခဲ့သော၊ သင်တန်းတက်ခဲ့သော
+          <label
+            htmlFor="school_attended"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၁၉။ ပညာဆည်းပူးခဲ့သော၊ သင်တန်းတက်ခဲ့သော
             ကျောင်း၊ကောလိပ်၊တက္ကသိုလ်၊အလုပ်ငှာန ၊သင်တန်းများစသည်များ။
           </label>
           <input
@@ -1446,34 +1593,67 @@ const PersonalDataForm = () => {
             value={school_attended}
             type="text"
             name="school_attended"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="from_years">မှ</label>
+          <label
+            htmlFor="from_years"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မှ
+          </label>
           <input
             onChange={handleFy}
             id="from_years"
             value={from_years}
             type="text"
             name="from_years"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="finished_years">ထိ</label>
+          <label
+            htmlFor="finished_years"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ထိ
+          </label>
           <input
             onChange={handleFinishedy}
             id="finished_years"
             value={finished_years}
             type="text"
             name="finished_years"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="school_location">
-            ကျောင်း၊တက္ကသိုလ်၊ အလုပ်ဌာန၊ သင်တန်း တည်ရာအရပ်
+          <label
+            htmlFor="type_of_school"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျောင်း၊တက္ကသိုလ်၊ အလုပ်ဌာန၊ သင်တန်း
+          </label>
+          <input
+            onChange={handleTypeOfSchool}
+            id="type_of_school"
+            value={type_of_school}
+            type="text"
+            name="schootype_of_school"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="school_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တည်ရာအရပ်
           </label>
           <input
             onChange={handleSc}
@@ -1481,23 +1661,53 @@ const PersonalDataForm = () => {
             value={school_location}
             type="text"
             name="school_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="school_level">ကျောင်းအဆင့်အတန်း</label>
+          <label
+            htmlFor="school_level"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အဆင့်အတန်း
+          </label>
           <input
             onChange={handleSl}
             id="school_level"
             value={school_level}
             type="text"
             name="school_level"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
+        <br />
         <div className="form-group">
-          <label htmlFor="from_year_abroad">
-            နိုင်ငံခြားသို့ ရောက်ဘူးခြင်း ရှိ-မရှိ ။
+          <label
+            htmlFor="school_level"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ပညာစတင်ဆည်းပူးခဲ့ သော နှစ်မှ စ၍ ယနေ့အထိ ထမ်းဆောင် နေသော အလုပ်ဌာန
+            အပါအဝင် ခုနှစ်သက္ကရာဇ် အဆက်ပြတ်မှု မရှိစေပဲ ဖြည့်သွင်းရန် ။
+            အမှူထမ်းသက် ဖြည့်စွက်ရာတွင် ရက်၊လ၊ခုနှစ် ကိုပါ ဖော်ပြရန် ။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label
+            htmlFor="from_year_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၂၀။ နိုင်ငံခြားသို့ ရောက်ဘူးခြင်း ရှိ-မရှိ ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="from_year_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကာလမှ
           </label>
           <input
             onChange={handleFya}
@@ -1505,44 +1715,66 @@ const PersonalDataForm = () => {
             value={from_year_abroad}
             type="text"
             name="from_year_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="finished_year_abroad">ကာလထိ</label>
+          <label
+            htmlFor="finished_year_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကာလထိ
+          </label>
           <input
             onChange={handleFiya}
             id="finished_year_abroad"
             value={finished_year_abroad}
             type="text"
             name="finished_year_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="countries_visited">သွားရောက်သည့်နိုင်ငံများ</label>
+          <label
+            htmlFor="countries_visited"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            သွားရောက်သည့်နိုင်ငံများ
+          </label>
           <input
             onChange={handleCV}
             id="countries_visited"
             value={countries_visited}
             type="text"
             name="countries_visited"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="matter_of_visiting">သွားရောက်သည့် ကိစ္</label>
+          <label
+            htmlFor="matter_of_visiting"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            သွားရောက်သည့် ကိစ္စ
+          </label>
           <input
             onChange={handleMov}
             id="matter_of_visiting"
             value={matter_of_visiting}
             type="text"
             name="matter_of_visiting"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="deposit_exchange">
+          <label
+            htmlFor="deposit_exchange"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
             နိုင်ငံခြားငွေမည်မျှ ထုတ်ယူခဲ့သည်
           </label>
           <input
@@ -1551,24 +1783,23 @@ const PersonalDataForm = () => {
             value={deposit_exchange}
             type="text"
             name="deposit_exchange"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_name">
-            ဝန်ထမ်း၏အဘနှင့် အဘ၏ မောင်နှမ အရင်းအချာများ။
+          <label
+            htmlFor="father_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ၂၁။ ဝန်ထမ်း၏အဘနှင့် အဘ၏ မောင်နှမ အရင်းအချာများ။
           </label>
-          <input
-            onChange={handleFn}
-            id="father_name"
-            value={father_name}
-            type="text"
-            name="father_name"
-            // required
-          />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relative_name">
+          <label
+            htmlFor="father_relative_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
             အမည်(အခြားအမည်များရှိလျှင် ဖော်ပြရန်)
           </label>
           <input
@@ -1577,81 +1808,1438 @@ const PersonalDataForm = () => {
             value={father_relative_name}
             type="text"
             name="father_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness"> တော်စပ်ပုံ</label>
+          <label
+            htmlFor="father_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            {" "}
+            တော်စပ်ပုံ
+          </label>
           <input
             onChange={handleFrr}
             id="father_relativeness"
             value={father_relativeness}
             type="text"
             name="father_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness_gender">ကျား၊မ</label>
+          <label
+            htmlFor="father_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
           <input
             onChange={handleFrg}
             id="father_relativeness_gender"
             value={father_relativeness_gender}
             type="text"
             name="father_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness_citizen">မည်သည့်နိုင်ငံသား</label>
+          <label
+            htmlFor="father_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့်နိုင်ငံသား
+          </label>
           <input
             onChange={handleFrc}
             id="father_relativeness_citizen"
             value={father_relativeness_citizen}
             type="text"
             name="father_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness_job">အလုပ်အကိုင်</label>
+          <label
+            htmlFor="father_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
           <input
             onChange={handleFrj}
             id="father_relativeness_job"
             value={father_relativeness_job}
             type="text"
             name="father_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness_location">နေရပ်</label>
+          <label
+            htmlFor="father_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
           <input
             onChange={handleFrl}
             id="father_relativeness_location"
             value={father_relativeness_location}
             type="text"
             name="father_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="father_relativeness_note">မှတ်ချက်</label>
+          <label
+            htmlFor="father_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            **မှတ်ချက်
+          </label>
           <input
             onChange={handleFrnnote}
             id="father_relativeness_note"
             value={father_relativeness_note}
             type="text"
             name="father_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
-
+        <div className="form-group">
+          <label
+            htmlFor="mother_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ဝန်ထမ်း၏အမိနှင့် အမိ၏ မောင်နှမ အရင်းအချာများ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleMrn}
+            id="mother_relative_name"
+            value={mother_relative_name}
+            type="text"
+            name="mother_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor=" mother_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleMr}
+            id="mother_relativeness"
+            value={mother_relativeness}
+            type="text"
+            name="mother_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="mother_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleMrg}
+            id="mother_relativeness_gender"
+            value={mother_relativeness_gender}
+            type="text"
+            name="mother_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="mother_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleMrc}
+            id="mother_relativeness_citizen"
+            value={mother_relativeness_citizen}
+            type="text"
+            name="mother_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="mother_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleMrjob}
+            id="mother_relativeness_job"
+            value={mother_relativeness_job}
+            type="text"
+            name="mother_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="mother_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleMrl}
+            id="mother_relativeness_location"
+            value={mother_relativeness_location}
+            type="text"
+            name="mother_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="mother_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleMrnote}
+            id="mother_relativeness_note"
+            value={mother_relativeness_note}
+            type="text"
+            name="mother_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            *အလုပ်အကိုင်ကို ဖော်ပြရာတွင် လက်ရှိ နှင့် အငြိမ်းစားယူပြီးလျှင်
+            အငြိမ်းစားမယူမီ နောက်ဆုံးရာထူးနှင့် ဌာနကို ဖော်ပြရန် ၊
+            ကုန်သည်ဖြစ်ပါက မည်သည့် ကုန်ပစ္စည်းဖြစ်ကြောင်း ဖော်ပြရန် ။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင် ခဲ့သော
+            အလုပ်အကိုင် ၊နောက်ဆုံး နေခဲ့သော လိပ်စာအပြည့်အစုံ ကိုဖော်ပြရန်နှင့်
+            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော် ပြရန် ။
+          </label>
+        </div>
+        <br />
+        {/*  //oversea_ */}
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၃။ နိုင်ငံခြားသွားမည့် သူ၏ မောင်နှမ အရင်းအချာများ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleOrn}
+            id="oversea_relative_name"
+            value={oversea_relative_name}
+            type="text"
+            name="oversea_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleOr}
+            id="oversea_relativeness"
+            value={oversea_relativeness}
+            type="text"
+            name="oversea_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleOrg}
+            id="oversea_relativeness_gender"
+            value={oversea_relativeness_gender}
+            type="text"
+            name="oversea_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleOrc}
+            id="oversea_relativeness_citizen"
+            value={oversea_relativeness_citizen}
+            type="text"
+            name="oversea_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleOrj}
+            id="oversea_relativeness_job"
+            value={oversea_relativeness_job}
+            type="text"
+            name="oversea_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleOrl}
+            id="oversea_relativeness_location"
+            value={oversea_relativeness_location}
+            type="text"
+            name="oversea_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleOrnote}
+            id="oversea_relativeness_note"
+            value={oversea_relativeness_note}
+            type="text"
+            name="oversea_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        {/*  */}
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၄ ။ဇနီး၊ခင်ပွန်းနှင့် ၎င်း၏မောင် နှမ အရင်းအချာများ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleLrn}
+            id="love_relative_name"
+            value={love_relative_name}
+            type="text"
+            name="love_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleLr}
+            id="love_relativeness"
+            value={love_relativeness}
+            type="text"
+            name="love_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleLrg}
+            id="love_relativeness_gender"
+            value={love_relativeness_gender}
+            type="text"
+            name="love_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleLrc}
+            id="love_relativeness_citizen"
+            value={love_relativeness_citizen}
+            type="text"
+            name="love_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleLrj}
+            id="love_relativeness_job"
+            value={love_relativeness_job}
+            type="text"
+            name="love_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleLrl}
+            id="love_relativeness_location"
+            value={love_relativeness_location}
+            type="text"
+            name="love_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleLrnote}
+            id="love_relativeness_note"
+            value={love_relativeness_note}
+            type="text"
+            name="love_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        {/*  */}
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၅။ ဇနီး၊ခင်ပွန်း၏အဘနှင့် မောင်နှမ အရင်းအချာများ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleLfrn}
+            id="love_father_relative_name"
+            value={love_father_relative_name}
+            type="text"
+            name="love_father_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleLfr}
+            id="love_father_relativeness"
+            value={love_father_relativeness}
+            type="text"
+            name="love_father_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleLfrg}
+            id="love_father_relativeness_gender"
+            value={love_father_relativeness_gender}
+            type="text"
+            name="love_father_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleLfrc}
+            id="love_father_relativeness_citizen"
+            value={love_father_relativeness_citizen}
+            type="text"
+            name="love_father_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleLfrj}
+            id="love_father_relativeness_job"
+            value={love_father_relativeness_job}
+            type="text"
+            name="love_father_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleLfrl}
+            id="love_father_relativeness_location"
+            value={love_father_relativeness_location}
+            type="text"
+            name="love_father_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_father_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleLfrnote}
+            id="love_father_relativeness_note"
+            value={love_father_relativeness_note}
+            type="text"
+            name="love_father_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၆။ ဇနီး၊ခင်ပွန်း၏အမိနှင့် မောင်နှမ အရင်းအချာများ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleLmrn}
+            id="love_mother_relative_name"
+            value={love_mother_relative_name}
+            type="text"
+            name="love_mother_relative_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleLmr}
+            id="love_mother_relativeness"
+            value={love_mother_relativeness}
+            type="text"
+            name="love_mother_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleLmrg}
+            id="love_mother_relativeness_gender"
+            value={love_mother_relativeness_gender}
+            type="text"
+            name="love_mother_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleLmrc}
+            id="love_mother_relativeness_citizen"
+            value={love_mother_relativeness_citizen}
+            type="text"
+            name="love_mother_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleLmrj}
+            id="love_mother_relativeness_job"
+            value={love_mother_relativeness_job}
+            type="text"
+            name="love_mother_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleLmrl}
+            id="love_mother_relativeness_location"
+            value={love_mother_relativeness_location}
+            type="text"
+            name="love_mother_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="love_mother_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleLmrnote}
+            id="love_mother_relativeness_note"
+            value={love_mother_relativeness_note}
+            type="text"
+            name="love_mother_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၇။ သား သမီးများနှင့် ၎င်းတို့၏ ဇနီး၊ခင်ပွန်း။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleCrn}
+            id="child_relative_name_n"
+            value={child_relative_name_n}
+            type="text"
+            name="child_relative_name_n"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleCr}
+            id="child_relativeness"
+            value={child_relativeness}
+            type="text"
+            name="child_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness_gender"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ကျား၊မ
+          </label>
+          <input
+            onChange={handleCrg}
+            id="child_relativeness_gender"
+            value={child_relativeness_gender}
+            type="text"
+            name="child_relativeness_gender"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness_citizen"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleCrc}
+            id="child_relativeness_citizen"
+            value={child_relativeness_citizen}
+            type="text"
+            name="child_relativeness_citizen"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            *အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleCrj}
+            id="child_relativeness_job"
+            value={child_relativeness_job}
+            type="text"
+            name="child_relativeness_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness_location"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နေရပ်
+          </label>
+          <input
+            onChange={handleCrl}
+            id="child_relativeness_location"
+            value={child_relativeness_location}
+            type="text"
+            name="child_relativeness_location"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="child_relativeness_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ** မှတ်ချက်
+          </label>
+          <input
+            onChange={handleCrnote}
+            id="child_relativeness_note"
+            value={child_relativeness_note}
+            type="text"
+            name="child_relativeness_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၈။ နိုင်ငံခြားတွင်ရာက်ရှိနေကြသည့် ဆွေမျိုးများ။**
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+          </label>
+          <input
+            onChange={handleOrnn}
+            id="oversea_relative_name_n"
+            value={oversea_relative_name_n}
+            type="text"
+            name="oversea_relative_name_n"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တော်စပ်ပုံ
+          </label>
+          <input
+            onChange={handleOrr}
+            id="oversea_relative_relativeness"
+            value={oversea_relative_relativeness}
+            type="text"
+            name="oversea_relative_relativeness"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_nation"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့် နိုင်ငံသား
+          </label>
+          <input
+            onChange={handleOrnation}
+            id="oversea_relative_nation"
+            value={oversea_relative_nation}
+            type="text"
+            name="oversea_relative_nation"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_job"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အလုပ်အကိုင်
+          </label>
+          <input
+            onChange={handleOrjob}
+            id="oversea_relative_job"
+            value={oversea_relative_job}
+            type="text"
+            name="oversea_relative_job"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_current_country"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ရောက်ရှိနေသည့်နိုင်ငံ
+          </label>
+          <input
+            onChange={handleOrcc}
+            id="oversea_relative_current_country"
+            value={oversea_relative_current_country}
+            type="text"
+            name="oversea_relative_current_country"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>{" "}
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_matter"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            သွားရာက်သည့်ကိစ္စ
+          </label>
+          <input
+            onChange={handleOrm}
+            id="oversea_relative_matter"
+            value={oversea_relative_matter}
+            type="text"
+            name="oversea_relative_matter"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_return"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ပြန်လည်ရောက်ရှိမယ့် ကာလ
+          </label>
+          <input
+            onChange={handleOrre}
+            id="oversea_relative_return"
+            value={oversea_relative_return}
+            type="text"
+            name="oversea_relative_return"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            *အလုပ်အကိုင်ကို ဖော်ပြရာတွင် လက်ရှိ နှင့် အငြိမ်းစားယူပြီးလျှင်
+            အငြိမ်းစားမယူမီ နောက်ဆုံးရာထူးနှင့် ဌာနကို ဖော်ပြရန် ၊
+            ကုန်သည်ဖြစ်ပါက မည်သည့် ကုန်ပစ္စည်းဖြစ်ကြောင်း ဖော်ပြရန် ။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင် ခဲ့သော
+            အလုပ်အကိုင် ၊နောက်ဆုံး နေခဲ့သော လိပ်စာအပြည့်အစုံ ကိုဖော်ပြရန်နှင့်
+            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော် ပြရန်၊အမှတ်စဉ်
+            ၂၇ ရှိ ဇယားတွင် သား၊သမီးများအတွက် တက်ရောက် နေသော ကျောင်း
+            ၊အဆင့်အတန်းနှင့် အဓိက ဘာသာ ရပ်ကို ဖော်ပြရန် ။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            *** နိုင်ငံခြားတွင်ရာက်ရှိနေ ေသာ ဆွေမျိုးများနှင့် ပက်သက်၍ ဇယားတွင်
+            ပြည့်စုံမှန်ကန်စွာ ဖြည့်သွင်းရန် ၊ ကွယ်လွန်သူများအတွက်
+            မကွယ်လွန်မီနောက်ဆုံး လုပ်ကိုင်ခဲသော အလုပ်အကိုင် ၊ နောက်ဆုံးနေခဲ့သော
+            နေရပ်လိပ်စာအပြည့်အစုံကို ဖော်ပြရန် ။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၂၉။ ဌာန ဆိုင်ရာ အရေးယူခံရခြင်း ရှိ-မရှိ ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            အရေးယူခံရသည့်ကာလ
+          </label>
+          <input
+            onChange={handleDat}
+            id="dept_action_taken"
+            value={dept_action_taken}
+            type="text"
+            name="dept_action_taken"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="oversea_relative_relativeness"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အရေးယူခံရသည့် အကြောင်းကိစ္စ
+          </label>
+          <input
+            onChange={handleDatf}
+            id="dept_action_taken_fact"
+            value={dept_action_taken_fact}
+            type="text"
+            name="dept_action_taken_fact"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="dept_punishment"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ချမှတ်ခံရသည့်ပြစ်ဒဏ်
+          </label>
+          <input
+            onChange={handleDp}
+            id="dept_punishment"
+            value={dept_punishment}
+            type="text"
+            name="dept_punishment"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="dept_action_taken_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မှတ်ချက်
+          </label>
+          <input
+            onChange={handleDatn}
+            id="dept_action_taken_note"
+            value={dept_action_taken_note}
+            type="text"
+            name="dept_action_taken_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၃၀။ တရားရုံးတွင် တရားစွဲ ခံရဖူးခြင်း ရှိ-မရှိ ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            တရားစွဲဆိုခြင်းခံရသည့် ကာလ
+          </label>
+          <input
+            onChange={handleCt}
+            id="court_time"
+            value={court_time}
+            type="text"
+            name="court_time"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="court_fact"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            တရားစွဲဆိုခြင်း ခံရသည့်အကြောင်းကိစ္စနှင့် စွဲဆို ခံရသည့်ဥပဒပုဒ်မ
+          </label>
+          <input
+            onChange={handleCf}
+            id="court_fact"
+            value={court_fact}
+            type="text"
+            name="court_fact"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="court_action"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ချမှတ်ခံရသည့်ပြစ်ဒဏ်
+          </label>
+          <input
+            onChange={handleCation}
+            id="court_action"
+            value={court_action}
+            type="text"
+            name="court_action"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="court_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မှတ်ချက်
+          </label>
+          <input
+            onChange={handleCnote}
+            id="court_note"
+            value={court_note}
+            type="text"
+            name="court_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၃၁။ ဘွဲ့၊တံဆိပ် ချီး မြှင့်ခံရခြင်းရှိ -မရှိ ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ချီးမြှင့်ခံရသည့်ကာလ
+          </label>
+          <input
+            onChange={handleDgy}
+            id="degree_give_year"
+            value={degree_give_year}
+            type="text"
+            name="degree_give_year"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="what_type_degree"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ချီးမြှင့်ခံရသည့် ဘွဲ့၊တံဆိပ်အမျိုးအစား
+          </label>
+          <input
+            onChange={handleWtd}
+            id="what_type_degree"
+            value={what_type_degree}
+            type="text"
+            name="what_type_degree"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="degree_give_note"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မှတ်ချက်
+          </label>
+          <input
+            onChange={handleDgn}
+            id="degree_give_note"
+            value={degree_give_note}
+            type="text"
+            name="degree_give_note"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၃၂။ နိုင်ငံခြားသို့ သွား ရောက် မည့် ကိစ္စ။
+          </label>
+        </div>
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            သင်ကြားမည့် ဘာသာရပ်နှင့် အဆင့်၊ တက်ရောက်မည့် သင်တန်း၊ သို့မဟုတ်
+            အခြားကိစ္စ
+          </label>
+          <input
+            onChange={handleRga}
+            id="reason_go_abroad"
+            value={reason_go_abroad}
+            type="text"
+            name="reason_go_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="abroad_country"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            စေလွှတ်သည့်နိုင်ငံ
+          </label>
+          <input
+            onChange={handleAc}
+            id="abroad_country"
+            value={abroad_country}
+            type="text"
+            name="abroad_country"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="time_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အချိန်ကာလ
+          </label>
+          <input
+            onChange={handleTa}
+            id="time_abroad"
+            value={time_abroad}
+            type="text"
+            name="time_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>{" "}
+        <div className="form-group">
+          <label
+            htmlFor="arrive_time_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နိုင်ငံခြားသို့ရာက်ရမည့်နေ့
+          </label>
+          <input
+            onChange={handleAta}
+            id="arrive_time_abroad"
+            value={arrive_time_abroad}
+            type="text"
+            name="arrive_time_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="what_gov_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            မည်သည့်အစိုးရ အဖွဲ့အစည်းအထောက်အပံ့
+          </label>
+          <input
+            onChange={handleWga}
+            id="what_gov_abroad"
+            value={what_gov_abroad}
+            type="text"
+            name="what_gov_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="dept_when_arr_from_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ပြန်လည်ရောက်ရှိလျှင် အမှု ထမ်းမည့် ဌာန၊တာဝန်
+          </label>
+          <input
+            onChange={handleDwafa}
+            id="dept_when_arr_from_abroad"
+            value={dept_when_arr_from_abroad}
+            type="text"
+            name="dept_when_arr_from_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="need_to_go_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            သွား ရောက်မည့် နိုင်ငံ
+          </label>
+          <input
+            onChange={handleNtga}
+            id="need_to_go_abroad"
+            value={need_to_go_abroad}
+            type="text"
+            name="need_to_go_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="credentials_for_abroad"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            နိုင်ငံခြားသို့ သွားရာက်မည့် ကိစွနှင့်အထာက်အထားများ
+          </label>
+          <input
+            onChange={handleCfa}
+            id="credentials_for_abroad"
+            value={credentials_for_abroad}
+            type="text"
+            name="credentials_for_abroad"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ၃၃။ အထက်ပါ အချက်အလက်များကို မှန်ကန်စွာ ဖြည့်သွင်း ရေးသားထားပါ
+            ကြောင်း ကိုယ်တိုင် လက်မှတ် ရေးထိုးပါသည်။
+          </label>
+        </div>
+        <br />
+        <div className="form-group">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            ရက်စွဲ
+          </label>
+          <input
+            onChange={handleSpdate}
+            id="submit_person_date"
+            value={submit_person_date}
+            type="text"
+            name="submit_person_date"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="submit_person_ticket"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            လျှောက်ထားသူလက်မှတ်
+          </label>
+          <input
+            onChange={handleSpt}
+            id="submit_person_ticket"
+            value={submit_person_ticket}
+            type="text"
+            name="submit_person_ticket"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="submit_person_name"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            အမည်
+          </label>
+          <input
+            onChange={handleSpn}
+            id="submit_person_name"
+            value={submit_person_name}
+            type="text"
+            name="submit_person_name"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="submit_person_position"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ရာထူး
+          </label>
+          <input
+            onChange={handleSpp}
+            id="submit_person_position"
+            value={submit_person_position}
+            type="text"
+            name="submit_person_position"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            htmlFor="submit_person_dept"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            ဌာန
+          </label>
+          <input
+            onChange={handleSpd}
+            id="submit_person_dept"
+            value={submit_person_dept}
+            type="text"
+            name="submit_person_dept"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            // required
+          />
+        </div>
         {/*  //////// */}
         <div className="mt-4">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
           >
             Submit
           </button>
