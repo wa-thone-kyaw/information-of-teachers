@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import Axios from "axios";
 import { toast } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
+import router from "next/router";
+
 const PersonalDataForm = () => {
   const [name, setName] = useState("");
 
@@ -713,6 +715,8 @@ const PersonalDataForm = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
+    //date picker
+
     /* const formData = new FormData();
     console.log(formData); */
     const formData = new URLSearchParams();
@@ -1136,18 +1140,21 @@ const PersonalDataForm = () => {
       .catch((error) => {
         console.error("Error sending data", error);
       });
+    setTimeout(() => {
+      router.push("/");
+    }, 2000); // Redirect after 2 seconds
   };
   ///UI
-  const mystyle = {
-    color: "blue",
-    // backgroundColor: "DodgerBlue",
-    padding: "50px",
-    fontFamily: "Arial",
-    textAlgin: "Center",
-  };
-  const yourStyle = {
-    backgroundColor: "white",
-  };
+  // const mystyle = {
+  //   color: "blue",
+  //   // backgroundColor: "DodgerBlue",
+  //   padding: "50px",
+  //   fontFamily: "Arial",
+  //   textAlgin: "Center",
+  // };
+  // const yourStyle = {
+  //   backgroundColor: "white",
+  // };
 
   return (
     <div className="mx-auto w-full max-w-md">
@@ -1232,7 +1239,7 @@ const PersonalDataForm = () => {
             onChange={handleAge}
             id="age"
             value={age}
-            type="text"
+            type="date"
             name="age"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1277,7 +1284,7 @@ const PersonalDataForm = () => {
             htmlFor="religion"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ၇။ လူမျိုး (ကပြားဖြစ်လျှင် မည်သည့် ကပြားဖြစ်ကြာင်းနှင့် ရှမ်း၊ ချင်း
+            ၇။ လူမျိုး (ကပြားဖြစ်လျှင် မည်သည့်ကပြားဖြစ်ကြာင်းနှင့် ရှမ်း၊ ချင်း
             စသည့် လူမျိုးစုဖြစ်လျှင် လိုအပ်သလို ဖော်ပြရန် )။
           </label>
           <input
@@ -1320,6 +1327,7 @@ const PersonalDataForm = () => {
             id="height"
             value={height}
             type="text"
+            placeholder="cm"
             name="height"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1337,6 +1345,7 @@ const PersonalDataForm = () => {
             id="weight"
             value={weight}
             type="text"
+            placeholder="lb"
             name="weight"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1398,7 +1407,7 @@ const PersonalDataForm = () => {
             htmlFor="department"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ၁၄။ အလုပ်အကိုင်နှင့် ဌာန{" "}
+            ၁၄။ အလုပ်အကိုင်နှင့်ဌာန{" "}
           </label>
           <input
             onChange={handleDepartment}
@@ -1421,7 +1430,7 @@ const PersonalDataForm = () => {
             onChange={handleSa}
             id="service_age"
             value={service_age}
-            type="text"
+            type="date"
             name="service_age"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1522,7 +1531,7 @@ const PersonalDataForm = () => {
             onChange={handleDyr}
             id="degree_year_received"
             value={degree_year_received}
-            type="text"
+            type="date"
             name="degree_year_received"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1608,7 +1617,7 @@ const PersonalDataForm = () => {
             onChange={handleFy}
             id="from_years"
             value={from_years}
-            type="text"
+            type="date"
             name="from_years"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1625,7 +1634,7 @@ const PersonalDataForm = () => {
             onChange={handleFinishedy}
             id="finished_years"
             value={finished_years}
-            type="text"
+            type="date"
             name="finished_years"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1688,7 +1697,7 @@ const PersonalDataForm = () => {
             htmlFor="school_level"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ပညာစတင်ဆည်းပူးခဲ့ သော နှစ်မှ စ၍ ယနေ့အထိ ထမ်းဆောင် နေသော အလုပ်ဌာန
+            ပညာစတင်ဆည်းပူးခဲ့သော နှစ်မှစ၍ ယနေ့အထိ ထမ်းဆောင်နေသော အလုပ်ဌာန
             အပါအဝင် ခုနှစ်သက္ကရာဇ် အဆက်ပြတ်မှု မရှိစေပဲ ဖြည့်သွင်းရန် ။
             အမှူထမ်းသက် ဖြည့်စွက်ရာတွင် ရက်၊လ၊ခုနှစ် ကိုပါ ဖော်ပြရန် ။
           </label>
@@ -1713,7 +1722,7 @@ const PersonalDataForm = () => {
             onChange={handleFya}
             id="from_year_abroad"
             value={from_year_abroad}
-            type="text"
+            type="date"
             name="from_year_abroad"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1730,7 +1739,7 @@ const PersonalDataForm = () => {
             onChange={handleFiya}
             id="finished_year_abroad"
             value={finished_year_abroad}
-            type="text"
+            type="date"
             name="finished_year_abroad"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -1758,7 +1767,7 @@ const PersonalDataForm = () => {
             htmlFor="matter_of_visiting"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            သွားရောက်သည့် ကိစ္စ
+            သွားရောက်သည့်ကိစ္စ
           </label>
           <input
             onChange={handleMov}
@@ -1792,7 +1801,7 @@ const PersonalDataForm = () => {
             htmlFor="father_name"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ၂၁။ ဝန်ထမ်း၏အဘနှင့် အဘ၏ မောင်နှမ အရင်းအချာများ။
+            ၂၁။ ဝန်ထမ်း၏အဘနှင့် အဘ၏ မောင်နှမအရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
@@ -1920,12 +1929,12 @@ const PersonalDataForm = () => {
             htmlFor="mother_name"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ဝန်ထမ်း၏အမိနှင့် အမိ၏ မောင်နှမ အရင်းအချာများ။
+            ဝန်ထမ်း၏အမိနှင့် အမိ၏မောင်နှမ အရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleMrn}
@@ -1976,7 +1985,7 @@ const PersonalDataForm = () => {
             htmlFor="mother_relativeness_citizen"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleMrc}
@@ -2027,7 +2036,7 @@ const PersonalDataForm = () => {
             htmlFor="mother_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleMrnote}
@@ -2050,21 +2059,21 @@ const PersonalDataForm = () => {
         <br />
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင် ခဲ့သော
-            အလုပ်အကိုင် ၊နောက်ဆုံး နေခဲ့သော လိပ်စာအပြည့်အစုံ ကိုဖော်ပြရန်နှင့်
-            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော် ပြရန် ။
+            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင်ခဲ့သော
+            အလုပ်အကိုင် ၊နောက်ဆုံးနေခဲ့သော လိပ်စာအပြည့်အစုံကို ဖော်ပြရန်နှင့်
+            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော်ပြရန် ။
           </label>
         </div>
         <br />
         {/*  //oversea_ */}
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၂၃။ နိုင်ငံခြားသွားမည့် သူ၏ မောင်နှမ အရင်းအချာများ။
+            ၂၃။ နိုင်ငံခြားသွားမည့် သူ၏မောင်နှမ အရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleOrn}
@@ -2115,7 +2124,7 @@ const PersonalDataForm = () => {
             htmlFor="oversea_relativeness_citizen"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleOrc}
@@ -2166,7 +2175,7 @@ const PersonalDataForm = () => {
             htmlFor="oversea_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleOrnote}
@@ -2181,12 +2190,12 @@ const PersonalDataForm = () => {
         {/*  */}
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၂၄ ။ဇနီး၊ခင်ပွန်းနှင့် ၎င်း၏မောင် နှမ အရင်းအချာများ။
+            ၂၄ ။ဇနီး၊ခင်ပွန်းနှင့် ၎င်း၏မောင် နှမအရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleLrn}
@@ -2237,7 +2246,7 @@ const PersonalDataForm = () => {
             htmlFor="love_relativeness_citizen"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleLrc}
@@ -2288,7 +2297,7 @@ const PersonalDataForm = () => {
             htmlFor="love_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleLrnote}
@@ -2303,12 +2312,12 @@ const PersonalDataForm = () => {
         {/*  */}
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၂၅။ ဇနီး၊ခင်ပွန်း၏အဘနှင့် မောင်နှမ အရင်းအချာများ။
+            ၂၅။ ဇနီး၊ခင်ပွန်း၏အဘနှင့် မောင်နှမအရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleLfrn}
@@ -2359,7 +2368,7 @@ const PersonalDataForm = () => {
             htmlFor="love_father_relativeness_citizen"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleLfrc}
@@ -2410,7 +2419,7 @@ const PersonalDataForm = () => {
             htmlFor="love_father_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleLfrnote}
@@ -2424,12 +2433,12 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၂၆။ ဇနီး၊ခင်ပွန်း၏အမိနှင့် မောင်နှမ အရင်းအချာများ။
+            ၂၆။ ဇနီး၊ခင်ပွန်း၏အမိနှင့် မောင်နှမအရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleLmrn}
@@ -2531,7 +2540,7 @@ const PersonalDataForm = () => {
             htmlFor="love_mother_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleLmrnote}
@@ -2550,7 +2559,7 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleCrn}
@@ -2601,7 +2610,7 @@ const PersonalDataForm = () => {
             htmlFor="child_relativeness_citizen"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleCrc}
@@ -2652,7 +2661,7 @@ const PersonalDataForm = () => {
             htmlFor="child_relativeness_note"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ** မှတ်ချက်
+            **မှတ်ချက်
           </label>
           <input
             onChange={handleCrnote}
@@ -2671,7 +2680,7 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အမည် (အခြားအမည် များ ရှိလျှင် လည်းဖော်ပြရန် )
+            အမည် (အခြားအမည်များ ရှိလျှင်လည်းဖော်ပြရန် )
           </label>
           <input
             onChange={handleOrnn}
@@ -2705,7 +2714,7 @@ const PersonalDataForm = () => {
             htmlFor="oversea_relative_nation"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့် နိုင်ငံသား
+            မည်သည့်နိုင်ငံသား
           </label>
           <input
             onChange={handleOrnation}
@@ -2779,7 +2788,7 @@ const PersonalDataForm = () => {
             onChange={handleOrre}
             id="oversea_relative_return"
             value={oversea_relative_return}
-            type="text"
+            type="date"
             name="oversea_relative_return"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -2796,19 +2805,19 @@ const PersonalDataForm = () => {
         <br />
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင် ခဲ့သော
-            အလုပ်အကိုင် ၊နောက်ဆုံး နေခဲ့သော လိပ်စာအပြည့်အစုံ ကိုဖော်ပြရန်နှင့်
-            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော် ပြရန်၊အမှတ်စဉ်
-            ၂၇ ရှိ ဇယားတွင် သား၊သမီးများအတွက် တက်ရောက် နေသော ကျောင်း
-            ၊အဆင့်အတန်းနှင့် အဓိက ဘာသာ ရပ်ကို ဖော်ပြရန် ။
+            ** ကွယ်လွန်ပီးဖြစ်လျှင် မကွယ်လွန်မီ နောက်ဆုံး လုပ်ကိုင်ခဲ့သော
+            အလုပ်အကိုင် ၊နောက်ဆုံးနေခဲ့သော လိပ်စာအပြည့်အစုံကို ဖော်ပြရန်နှင့်
+            မှတ်ချက်ဇယားတွင် ကွယ်လွန်သော ခုနှစ်သက္ကရာဇ်ကို ဖော်ပြရန်၊အမှတ်စဉ် ၂၇
+            ရှိဇယားတွင် သား၊သမီးများအတွက် တက်ရောက်နေသော ကျောင်း ၊အဆင့်အတန်းနှင့်
+            အဓိကဘာသာရပ်ကို ဖော်ပြရန် ။
           </label>
         </div>
         <br />
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            *** နိုင်ငံခြားတွင်ရာက်ရှိနေ ေသာ ဆွေမျိုးများနှင့် ပက်သက်၍ ဇယားတွင်
+            *** နိုင်ငံခြားတွင်ရာက်ရှိနေသော ဆွေမျိုးများနှင့် ပက်သက်၍ ဇယားတွင်
             ပြည့်စုံမှန်ကန်စွာ ဖြည့်သွင်းရန် ၊ ကွယ်လွန်သူများအတွက်
-            မကွယ်လွန်မီနောက်ဆုံး လုပ်ကိုင်ခဲသော အလုပ်အကိုင် ၊ နောက်ဆုံးနေခဲ့သော
+            မကွယ်လွန်မီနောက်ဆုံး လုပ်ကိုင်ခဲ့သော အလုပ်အကိုင် ၊ နောက်ဆုံးနေခဲ့သော
             နေရပ်လိပ်စာအပြည့်အစုံကို ဖော်ပြရန် ။
           </label>
         </div>
@@ -2820,13 +2829,13 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            အရေးယူခံရသည့်ကာလ
+            အရေးယူခံရသည့် ကာလ
           </label>
           <input
             onChange={handleDat}
             id="dept_action_taken"
             value={dept_action_taken}
-            type="text"
+            type="date"
             name="dept_action_taken"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -2896,7 +2905,7 @@ const PersonalDataForm = () => {
             onChange={handleCt}
             id="court_time"
             value={court_time}
-            type="text"
+            type="date"
             name="court_time"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -2907,7 +2916,7 @@ const PersonalDataForm = () => {
             htmlFor="court_fact"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            တရားစွဲဆိုခြင်း ခံရသည့်အကြောင်းကိစ္စနှင့် စွဲဆို ခံရသည့်ဥပဒပုဒ်မ
+            တရားစွဲဆိုခြင်း ခံရသည့်အကြောင်းကိစ္စနှင့် စွဲဆိုခံရသည့်ဥပဒေပုဒ်မ
           </label>
           <input
             onChange={handleCf}
@@ -2955,7 +2964,7 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၃၁။ ဘွဲ့၊တံဆိပ် ချီး မြှင့်ခံရခြင်းရှိ -မရှိ ။
+            ၃၁။ ဘွဲ့၊တံဆိပ် ချီးမြှင့်ခံရခြင်းရှိ-မရှိ ။
           </label>
         </div>
         <div className="form-group">
@@ -2966,7 +2975,7 @@ const PersonalDataForm = () => {
             onChange={handleDgy}
             id="degree_give_year"
             value={degree_give_year}
-            type="text"
+            type="date"
             name="degree_give_year"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -3008,12 +3017,12 @@ const PersonalDataForm = () => {
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            ၃၂။ နိုင်ငံခြားသို့ သွား ရောက် မည့် ကိစ္စ။
+            ၃၂။ နိုင်ငံခြားသို့ သွားရောက်မည့် ကိစ္စ။
           </label>
         </div>
         <div className="form-group">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            သင်ကြားမည့် ဘာသာရပ်နှင့် အဆင့်၊ တက်ရောက်မည့် သင်တန်း၊ သို့မဟုတ်
+            သင်ကြားမည့် ဘာသာရပ်နှင့် အဆင့်၊ တက်ရောက်မည့် သင်တန်း ၊ သို့မဟုတ်
             အခြားကိစ္စ
           </label>
           <input
@@ -3054,7 +3063,7 @@ const PersonalDataForm = () => {
             onChange={handleTa}
             id="time_abroad"
             value={time_abroad}
-            type="text"
+            type="date"
             name="time_abroad"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -3065,13 +3074,13 @@ const PersonalDataForm = () => {
             htmlFor="arrive_time_abroad"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            နိုင်ငံခြားသို့ရာက်ရမည့်နေ့
+            နိုင်ငံခြားသို့ရောက်ရမည့်နေ့
           </label>
           <input
             onChange={handleAta}
             id="arrive_time_abroad"
             value={arrive_time_abroad}
-            type="text"
+            type="date"
             name="arrive_time_abroad"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
@@ -3082,7 +3091,7 @@ const PersonalDataForm = () => {
             htmlFor="what_gov_abroad"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            မည်သည့်အစိုးရ အဖွဲ့အစည်းအထောက်အပံ့
+            မည်သည့် အစိုးရအဖွဲ့အစည်းအထောက်အပံ့
           </label>
           <input
             onChange={handleWga}
@@ -3133,7 +3142,7 @@ const PersonalDataForm = () => {
             htmlFor="credentials_for_abroad"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            နိုင်ငံခြားသို့ သွားရာက်မည့် ကိစွနှင့်အထာက်အထားများ
+            နိုင်ငံခြားသို့သွားရာက်မည့် ကိစ္စနှင့်အထောက်အထားများ
           </label>
           <input
             onChange={handleCfa}
@@ -3161,11 +3170,15 @@ const PersonalDataForm = () => {
             onChange={handleSpdate}
             id="submit_person_date"
             value={submit_person_date}
-            type="text"
+            type="date"
             name="submit_person_date"
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
+          {/*   <DatePicker selected={selectedDate} onChange={handleDateChange} />
+          {selectedDate && (
+            <p>Selected Date: {selectedDate.toLocaleDateString()}</p>
+          )} */}
         </div>
         <div className="form-group">
           <label
@@ -3239,7 +3252,8 @@ const PersonalDataForm = () => {
         <div className="mt-4">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-green-400 text-white font-bold w-full py-2 px-3 rounded focus:outline-none focus:shadow-outline"
+            /* className=" bg-blue-500 hover:bg-rose-500 text-white font-bold w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" */
           >
             Submit
           </button>
