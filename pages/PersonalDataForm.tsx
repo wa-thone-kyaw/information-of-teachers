@@ -3249,6 +3249,15 @@ const PersonalDataForm = () => {
           />
         </div>
         {/*  //////// */}
+        <label>
+          <input
+            type="checkbox"
+            name="human_verification"
+            required
+            className="text-black font-bold text-lg"
+          />
+          I am not a robot
+        </label>
         <div className="mt-4">
           <button
             type="submit"
