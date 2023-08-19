@@ -2,16 +2,17 @@
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "./Avatar";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-
+import admin from "./admin panel/admin";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
 
 import PersonalDataForm from "../../../pages/PersonalDataForm";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -22,11 +23,22 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
+  // This effect runs only on the client side after rendering
+  /*  useEffect(() => {
+    setIsClient(true);
+  }, []); */
   /* const handlePersonalDataFormClick = () => {
     router.push("/app/components/navbar/PersonalDataForm.tsx");
   }; */
 
+  /*  const handleGoAdmin = () => {
+    if (isClient) {
+      const router = require("next/router");
+      router.push("./admin panel/admin.tsx");
+    }
+  }; */
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
@@ -34,11 +46,18 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const handleButtonClick = () => {
     router.push("/pages/MyPersonalData.tsx");
   }; */
+
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+  }, [currentUser, loginModal]);
+  const router = useRouter();
   return (
     <div className="relative">
       <div className=" flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="
  
 hidden
@@ -106,9 +125,22 @@ cursor-pointer
             {currentUser ? (
               <>
                 {/*        to show items when user login */}
-                <MenuItem onClick={() => {}} label=" Information Lists" />
+                <MenuItem
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      router.push("/Listing");
+                    }
+                  }}
+                  label=" Information Lists"
+                />
 
-                <MenuItem onClick={() => {}} label="View My Information" />
+                <MenuItem
+                  onClick={() => {
+                    router.push("./admin panel/admin.tsx");
+                  }}
+                  label="View My Information"
+                />
+                {/*            <Link href="/test.tsx">Go to Next Page</Link> */}
                 <MenuItem onClick={() => {}} label=" How to used?" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />

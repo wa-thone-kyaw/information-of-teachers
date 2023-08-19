@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { BiSearch } from "react-icons/bi";
 import Link from "next/link";
+
 const Search = () => {
   return (
     <div
@@ -30,7 +31,7 @@ text-sm
 font-semibold
 px-6"
         >
-          HOME
+          <Link href="/">HOME</Link>
         </div>
 
         {/*  Add Information */}

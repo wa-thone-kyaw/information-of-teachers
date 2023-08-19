@@ -1,10 +1,16 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Axios from "axios";
 import { toast } from "react-hot-toast";
 import "bootstrap/dist/css/bootstrap.min.css";
 import router from "next/router";
+import { IoMdClose } from "react-icons/io";
 
 const PersonalDataForm = () => {
+  const handleClose = (e: any) => {
+    setTimeout(() => {
+      router.push("/");
+    });
+  };
   const [name, setName] = useState("");
 
   const [child_name, setChildName] = useState("");
@@ -1157,12 +1163,25 @@ const PersonalDataForm = () => {
   // };
 
   return (
-    <div className="mx-auto w-full max-w-md">
+    <div className="mx-auto w-full max-w-md  behavior: 'smooth',">
       <form
         // className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
       >
+        <button
+          onClick={handleClose}
+          className="
+
+p1
+border-0
+hover:opacity-70
+transition
+absolute
+left-9"
+        >
+          <IoMdClose size={30} />{" "}
+        </button>
         <div className="mb-4">
           <h1
             className="text-center text-2xl font-bold mb-4"
@@ -3249,6 +3268,7 @@ const PersonalDataForm = () => {
           />
         </div>
         {/*  //////// */}
+        <br />
         <label>
           <input
             type="checkbox"
