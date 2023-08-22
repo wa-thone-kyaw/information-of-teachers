@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { BiSearch } from "react-icons/bi";
+import { BiMailSend, BiSearch, BiSolidContact } from "react-icons/bi";
 import Link from "next/link";
 
 const Search = () => {
@@ -56,13 +56,15 @@ px-6"
             <Link href="/PersonalDataForm">Add information</Link>
           </div>
           <div>
-            <Image
-              className="rounded-full"
-              height="30"
-              width="30"
-              alt="Avatar"
-              src="/images/add-friend.png"
-            />
+            <Link href="/PersonalDataForm">
+              <Image
+                className="rounded-full"
+                height="30"
+                width="30"
+                alt="Avatar"
+                src="/images/add-friend.png"
+              />
+            </Link>
           </div>
         </div>
         {/*    Search Information */}
@@ -81,17 +83,21 @@ px-6"
         gap-3
         "
         >
-          <div className="hidden sm:block">
-            <Link href="/SearchForm">Search</Link>
-          </div>
-          <div
-            className="p-2
+          <Link href="/Contact">
+            <div className="hidden sm:block">
+              <p>Get in touch</p>
+            </div>
+          </Link>
+          <Link href="/Contact">
+            <div
+              className="p-2
 bg-rose-500
 rounded-full
 text-white"
-          >
-            <BiSearch size={18} />
-          </div>
+            >
+              <BiMailSend size={18} />
+            </div>
+          </Link>
         </div>
       </div>
     </div>

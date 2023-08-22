@@ -1426,7 +1426,7 @@ left-9"
             htmlFor="department"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ၁၄။ အလုပ်အကိုင်နှင့်ဌာန{" "}
+            ၁၄။ အလုပ်အကိုင်နှင့်ဌာန
           </label>
           <input
             onChange={handleDepartment}
@@ -1536,6 +1536,7 @@ left-9"
             value={specialization}
             type="text"
             name="specialization"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
             // required
           />
         </div>
@@ -1948,7 +1949,7 @@ left-9"
             htmlFor="mother_name"
             className="block text-gray-700 text-sm font-bold mb-2"
           >
-            ဝန်ထမ်း၏အမိနှင့် အမိ၏မောင်နှမ အရင်းအချာများ။
+            ၂၂။ ဝန်ထမ်း၏အမိနှင့် အမိ၏မောင်နှမ အရင်းအချာများ။
           </label>
         </div>
         <div className="form-group">
