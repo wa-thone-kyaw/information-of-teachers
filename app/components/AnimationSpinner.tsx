@@ -19,3 +19,20 @@ export default AnimationSpinner;
 // {data.map((item, index) =>
 // {(filteredData.length > 0 ? filteredData : data).map(
 //               (item, index) =>
+
+// {(selectedDepartment !== "" ? filteredData : data).map(
+//               (item, index) =>
+
+//  <div className="form-group">
+//    <label className="block text-gray-700 text-sm font-bold mb-2">
+//      Upload Image:
+//    </label>
+//    <input
+//      type="file"
+//      /*  value={setSelectedImage} */
+//      id="image"
+//      accept="image"
+//      onChange={handleFileChange}
+//      className="mt-1"
+//    />
+//  </div>;

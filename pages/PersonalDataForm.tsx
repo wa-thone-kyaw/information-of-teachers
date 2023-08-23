@@ -11,6 +11,43 @@ const PersonalDataForm = () => {
       router.push("/");
     });
   };
+  const [file, setFile] = useState(null);
+  const [uploadedImagePath, setUploadedImagePath] = useState("");
+
+  const handleFileChange = (e: any) => {
+    setFile(e.target.files[0]);
+  };
+
+  //photo
+
+  /*  const [selectedImage, setSelectedImage] = useState("");
+  const handleImageChange = (e: any) => {
+    setSelectedImage(e.target.files[0]);
+  }; */
+  const [customDepartment, setCustomDepartment] = useState("");
+  const [departmentOptions, setDepartmentOptions] = useState([
+    "Civil",
+    "Mechanical",
+    "Electrical Power",
+    "Electronic",
+    "Information Technology",
+  ]);
+
+  const handleSpdChange = (e: any) => {
+    setSpd(e.target.value);
+  };
+
+  const handleCustomDepartmentChange = (e: any) => {
+    setCustomDepartment(e.target.value);
+  };
+
+  const handleAddCustomDepartment = () => {
+    if (customDepartment.trim() !== "") {
+      setDepartmentOptions([...departmentOptions, customDepartment]);
+      setSpd(customDepartment);
+      setCustomDepartment("");
+    }
+  };
   const [name, setName] = useState("");
 
   const [child_name, setChildName] = useState("");
@@ -954,6 +991,7 @@ const PersonalDataForm = () => {
     formData.append("school_headmaster_position", school_headmaster_position);
     formData.append("school_headmaster_dept", school_headmaster_dept);
     formData.append("school_headmaster_dept_date", school_headmaster_dept_date);
+    //formData.append("image", file);
 
     setName("");
 
@@ -1142,13 +1180,15 @@ const PersonalDataForm = () => {
     Axios.post("/api/information", formData)
       .then((response) => {
         console.log("Data sent successfully", response.data);
+        //setUploadedImagePath(response.data.imagePath);
       })
       .catch((error) => {
         console.error("Error sending data", error);
       });
-    setTimeout(() => {
-      router.push("/");
-    }, 2000); // Redirect after 2 seconds
+    router.push("/ThankYou");
+    /* setTimeout(() => {
+      router.push("/ThankYou");
+    }, 2000); */ // Redirect after 2 seconds
   };
   ///UI
   // const mystyle = {
@@ -3251,22 +3291,76 @@ left-9"
             // required
           />
         </div>
-        <div className="form-group">
-          <label
-            htmlFor="submit_person_dept"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-            ဌာန
-          </label>
-          <input
-            onChange={handleSpd}
-            id="submit_person_dept"
-            value={submit_person_dept}
-            type="text"
-            name="submit_person_dept"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            // required
-          />
+        <div>
+          <div className="form-group">
+            <label
+              htmlFor="submit_person_dept"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              ဌာန
+            </label>
+            <select
+              id="submit_person_dept"
+              value={submit_person_dept}
+              onChange={handleSpdChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              required
+            >
+              <option value="">Select Department</option>
+              {departmentOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+          <br />
+          <div className="form-group">
+            <div className="flex">
+              <input
+                id="custom_department"
+                value={customDepartment}
+                placeholder="ဌာန များတွင် မပါဝင်ပါက ထည့်သွင်းရန်"
+                onChange={handleCustomDepartmentChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              />
+              <button
+                onClick={handleAddCustomDepartment}
+                className="ml-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+        {/* <div>
+          <h1>Image Upload</h1>
+          <input type="file" onChange={handleFileChange} />
+          <button onClick={handleUpload}>Upload</button>
+
+          {uploadedImagePath && (
+            <div>
+              <h2>Uploaded Image</h2>
+              <img src={uploadedImagePath} alt="Uploaded" />
+            </div>
+          )}
+        </div> */}
+        {/*     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-purple-800 to-indigo-700">
+          <div className="max-w-3xl p-8 bg-white shadow-lg rounded-md text-center"> */}
+        {/* ... other content ...}
+            <div className="mb-6">
+              <label htmlFor="image" className="text-gray-800">
+                Upload Image:
+              </label>
+              <input
+                type="file"
+                id="image"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="mt-1"
+              />
+            </div>
+          </div>
         </div>
         {/*  //////// */}
         <br />

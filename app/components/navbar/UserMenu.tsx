@@ -134,14 +134,14 @@ cursor-pointer
                   label=" Information Lists"
                 />
 
-                <MenuItem
+                {/*  <MenuItem
                   onClick={() => {
                     router.push("./admin panel/admin.tsx");
                   }}
                   label="View My Information"
                 />
                 {/*            <Link href="/test.tsx">Go to Next Page</Link> */}
-                <MenuItem onClick={() => {}} label=" How to used?" />
+                {/*   <MenuItem onClick={() => {}} label=" How to used?" /> */}
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>

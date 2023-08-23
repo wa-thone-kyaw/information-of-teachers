@@ -4,30 +4,127 @@ import AnimationSpinner from "../components/AnimationSpinner";
 import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
-import { IoMdSearch } from "react-icons/io";
 
 const Admin = () => {
+  const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [departmentOptions, setDepartmentOptions] = useState([]);
+
+  //department
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("http://localhost:8000/api/informations"); // Change the URL to your actual API endpoint for departments
+        const jsonData = await response.json();
+        setDepartmentOptions(jsonData);
+      } catch (error) {
+        console.error("Error fetching department options:", error);
+      }
+    }
+    fetchData();
+  }, []);
 
   const handleSearch = (searchText) => {
-    const filtered = data.filter((item) =>
-      item.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    setSearchText(searchText);
+    console.log(searchText);
+    const filtered = data.filter((item) => {
+      const nameMatches = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+      const departmentMatches =
+        selectedDepartment === "" ||
+        (item.submit_person_dept &&
+          item.submit_person_dept.toLowerCase() ===
+            selectedDepartment.toLowerCase());
+      return nameMatches && departmentMatches;
+    });
     setFilteredData(filtered);
   };
+
   const [data, setData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   //filtering
   const [selectedDepartment, setSelectedDepartment] = useState("");
-  const handleDepartmentFilter = (department) => {
+
+  /* const filterByDepartment = (department) => {
     setSelectedDepartment(department);
-    const filtered = data.filter(
-      (item) =>
-        item.submit_person_dept &&
-        item.submit_person_dept.toLowerCase() === department.toLowerCase()
-    );
+    if (department === "") {
+      setFilteredData([]); // Clear the filter
+    } else {
+      const filtered = data.filter(
+        (item) =>
+          item.submit_person_dept &&
+          item.submit_person_dept.toLowerCase() === department.toLowerCase()
+      );
+      // Apply name filter as well
+      const nameFiltered = filtered.filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredData(nameFiltered);
+    }
+  }; */
+  /* const filterByDepartment = (department) => {
+    setSelectedDepartment(department);
+    console.log(department);
+
+    // Apply both department and name filters
+    const filtered = data.filter((item) => {
+      const departmentMatches =
+        department === "" ||
+        (item.submit_person_dept &&
+          item.submit_person_dept.toLowerCase() === department.toLowerCase());
+
+      const nameMatches = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+
+      return departmentMatches && nameMatches;
+    });
+
+    setFilteredData(filtered);
+  };
+ */
+  /* const filterByDepartment = (department) => {
+    setSelectedDepartment(department);
+
+    // Apply both department and name filters
+    const filtered = data.filter((item) => {
+      const departmentMatches =
+        department === "" ||
+        department === "All" || // Added condition
+        (item.submit_person_dept &&
+          item.submit_person_dept.toLowerCase() === department.toLowerCase());
+
+      const nameMatches = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+
+      return departmentMatches && nameMatches;
+    });
+
+    setFilteredData(filtered);
+  }; */
+
+  const filterByDepartment = (department) => {
+    setSelectedDepartment(department);
+
+    // Apply both department and name filters
+    const filtered = data.filter((item) => {
+      const departmentMatches =
+        department === "" ||
+        department === "All" || // Handle "All Departments" case
+        (item.submit_person_dept &&
+          item.submit_person_dept.toLowerCase() === department.toLowerCase());
+
+      const nameMatches = item.name
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
+
+      return departmentMatches && nameMatches;
+    });
+
     setFilteredData(filtered);
   };
 
@@ -54,8 +151,6 @@ const Admin = () => {
     }, 1000);
     try {
       const response = await fetch(
-        /* `http://localhost:8000/api/informations/${id}`, */
-        /* `http://localhost:8000/api-test/personal-id/${_id}`, */
         `http://localhost:8000/api-test/personal-id/search?_id=${_id}`,
 
         {
@@ -66,7 +161,6 @@ const Admin = () => {
       if (response.ok) {
         console.log("success delete");
         window.location.reload();
-        // Refresh the data after successful deletion
       } else {
         console.error("Delete request failed.");
       }
@@ -82,35 +176,48 @@ const Admin = () => {
         <div className="flex items-center">
           <input
             type="text"
+            value={searchText}
             placeholder="Search by name "
             onChange={(e) => handleSearch(e.target.value)}
             className="border border-gray-300 rounded py-1 px-2 w-120 text-center focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div className="mb-4">
-          <select
+        <br />
+        <div className="flex justify-end mb-4 mt-4 px-10">
+          {/* <select
             id="department"
-            onChange={(e) => handleDepartmentFilter(e.target.value)}
+            onChange={(e) => filterByDepartment(e.target.value)}
             value={selectedDepartment}
             className="border border-gray-300 rounded py-1 px-2 focus:outline-none focus:border-blue-500"
           >
             <option value="">All Departments</option>
+            <br />
+            <option value="Civil">Civil</option>
+            <br />
+            <option value="Mech">Mechanical</option>
+            <br />
+            <option value="EP">EP</option>
+            <br />
+            <option value="EC">EC</option>
+            <br />
             <option value="IT">IT</option>
-            <option value="Mech">Mech</option>
-            {/* Add more options as needed */}
+            <br />
+          </select> */}
+
+          <select
+            id="department"
+            onChange={(e) => filterByDepartment(e.target.value)}
+            value={selectedDepartment}
+            className="border border-gray-300 rounded py-1 px-2 focus:outline-none focus:border-blue-500"
+          >
+            <option value="All">All Departments</option>
+            {departmentOptions.map((option) => (
+              <option key={option.id} value={option.submit_person_dept}>
+                {option.submit_person_dept}
+              </option>
+            ))}
           </select>
         </div>
-
-        {/* 
- const [selectedDepartment, setSelectedDepartment] = useState("");
-  const handleDepartmentFilter = (department) => {
-    setSelectedDepartment(department);
-    const filtered = data.filter(
-      (item) =>
-        item.submit_person_dept.toLowerCase() === department.toLowerCase()
-    );
-    setFilteredData(filtered);
-  }; */}
       </div>
 
       <div>
@@ -133,7 +240,7 @@ const Admin = () => {
           </thead>
 
           <tbody className="bg-white divide-y divide-gray-200">
-            {(selectedDepartment !== "" ? filteredData : data).map(
+            {(filteredData.length > 0 ? filteredData : data).map(
               (item, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>

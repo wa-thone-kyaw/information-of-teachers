@@ -5,6 +5,7 @@ import axios from "axios";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const {
+      image,
       name,
       child_name,
       other_name,
@@ -129,6 +130,7 @@ export default async function handler(req, res) {
       // Forward the data to your Node.js backend using Axios or any other HTTP library
       // Replace "http://your-node-js-backend-url:port/api/informations" with your actual backend URL
       await axios.post("http://localhost:8000/api/informations", {
+        image,
         name,
         child_name,
         other_name,
