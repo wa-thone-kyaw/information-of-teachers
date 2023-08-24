@@ -168,7 +168,14 @@ const Admin = () => {
       console.error("Error deleting data:", error);
     }
   };
-
+  const uniqueDepartments = new Set();
+  const uniqueDepartmentOptions = departmentOptions.filter((option) => {
+    if (!uniqueDepartments.has(option.submit_person_dept)) {
+      uniqueDepartments.add(option.submit_person_dept);
+      return true;
+    }
+    return false;
+  });
   return (
     <ClientOnly>
       <br />
@@ -211,7 +218,7 @@ const Admin = () => {
             className="border border-gray-300 rounded py-1 px-2 focus:outline-none focus:border-blue-500"
           >
             <option value="All">All Departments</option>
-            {departmentOptions.map((option) => (
+            {uniqueDepartmentOptions.map((option) => (
               <option key={option.id} value={option.submit_person_dept}>
                 {option.submit_person_dept}
               </option>

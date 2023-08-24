@@ -43,6 +43,7 @@ const Contact = () => {
         }
       );
     e.target.reset();
+    router.push("/ThankYou");
   };
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -85,6 +86,7 @@ left-9"
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </div>
       <div className="mb-4">
@@ -98,6 +100,7 @@ left-9"
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
       <div className="mb-4">
@@ -111,6 +114,7 @@ left-9"
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
+          required
         />
       </div>
       <div className="mb-4">
@@ -124,6 +128,7 @@ left-9"
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
           value={age}
           onChange={(e) => setAge(e.target.value)}
+          required
         />
       </div>
       <div className="mb-4">
@@ -137,6 +142,7 @@ left-9"
           className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-400"
           value={dept}
           onChange={(e) => setDept(e.target.value)}
+          required
         />
       </div>
       <div className="mb-4">
